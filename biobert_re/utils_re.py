@@ -24,7 +24,7 @@ import sys
 sys.path.append("../")
 sys.path.append('./biobert_re/')
 
-from data_processor import glue_convert_examples_to_features, glue_output_modes, glue_processors
+# from data_processor import glue_convert_examples_to_features, glue_output_modes, glue_processors
 
 import utils
 from ehr import HealthRecord
