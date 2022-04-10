@@ -173,12 +173,19 @@ def main():
         is_bert_tokenizer = True
 
     else:
-        warnings.warn("Tokenizer named " + args.tokenizer + " not found."
-                      "Using default tokenizer instead. Acceptable values"
-                      "include 'scispacy', 'biobert-base', 'biobert-large',"
-                      "and 'default'.")
-        tokenizer = default_tokenizer
-        is_bert_tokenizer = False
+        # warnings.warn("Tokenizer named " + args.tokenizer + " not found."
+        #               "Using default tokenizer instead. Acceptable values"
+        #               "include 'scispacy', 'biobert-base', 'biobert-large',"
+        #               "and 'default'.")
+        # tokenizer = default_tokenizer
+        # is_bert_tokenizer = False
+        from transformers import AutoTokenizer
+        biobert = AutoTokenizer.from_pretrained(args.tokenizer)
+
+        args.max_seq_len -= biobert.num_special_tokens_to_add()
+        tokenizer = biobert.tokenize
+        is_bert_tokenizer = True
+
 
     print("\nReading data\n")
     train_dev, test = read_data(data_dir=args.input_dir,
