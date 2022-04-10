@@ -2,7 +2,7 @@ import argparse
 
 from utils import read_data, save_pickle, read_ade_data
 from biobert_ner.utils_ner import generate_input_files
-from biobert_re.utils_re import generate_re_input_files
+# from biobert_re.utils_re import generate_re_input_files
 from typing import List, Iterator, Dict
 import warnings
 import os
